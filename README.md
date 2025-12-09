@@ -1,73 +1,127 @@
-# React + TypeScript + Vite
+Virtual Ring Light 💡
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Turn any monitor into a soft, configurable light for TikTok, Instagram Reels, video calls, or recording – no physical ring light needed.
 
-Currently, two official plugins are available:
+## Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Live: `https://ashunasar.github.io/virtual-ring-light/`
 
-## React Compiler
+Open this URL on any laptop/monitor, go fullscreen, and use the controls to tune your lighting.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Adjustable brightness (0–100%)
+- Adjustable color temperature (2700K–6500K)
+- Multiple presets:
+  - Warm, Neutral, Cool
+  - Soft, Sunset, Night Mode, Green Screen, Daylight
+- Fullscreen toggle (button + `F` key)
+- Show/Hide controls (`H` key)
+- Keyboard shortcuts for quick tuning:
+  - `Arrow Up/Down` – brightness
+  - `Arrow Left/Right` – temperature
+- Settings persisted in `localStorage` (remembers last used values)
+- Responsive UI, works on laptops, desktops, and external monitors
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Use Cases
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Using your laptop screen as a ring light for:
+  - TikTok / Reels / Shorts
+  - YouTube / streaming
+  - Zoom / Google Meet / video calls
+- Lighting your face from multiple angles by opening the app on multiple screens
+- Testing different lighting moods (warm, cool, soft, etc.) without buying hardware
+
+---
+
+## Getting Started (Local Development)
+
+```bash
+# Clone the repo
+git clone https://github.com/ashunasar/virtual-ring-light.git
+cd virtual-ring-light
+
+# Install dependencies
+npm install
+
+# Run dev server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+By default (with `--host`), you can access it on:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `http://localhost:5173/` (same machine)
+- `http://YOUR_LOCAL_IP:5173/` (other devices on same WiFi)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+> Tip: On macOS, use `ifconfig | grep "inet " | grep -v 127.0.0.1` to find your local IP.
+
+---
+
+## GitHub Pages Deployment
+
+This project is configured to deploy as a static site to GitHub Pages.
+
+### Build & Deploy
+
+```bash
+# Build and push to gh-pages branch
+npm run deploy
 ```
+
+The app is served from:
+
+```text
+https://ashunasar.github.io/virtual-ring-light/
+```
+
+The `base` path in the Vite config is set to `/virtual-ring-light/` so assets resolve correctly on GitHub Pages.
+
+---
+
+## Tech Stack
+
+- React + TypeScript
+- Vite
+- CSS (no UI frameworks)
+- LocalStorage for persistence
+
+---
+
+## Keyboard Shortcuts
+
+- `F` – Toggle fullscreen
+- `H` – Show / Hide controls
+- `Arrow Up` – Increase brightness
+- `Arrow Down` – Decrease brightness
+- `Arrow Right` – Increase color temperature
+- `Arrow Left` – Decrease color temperature
+
+---
+
+## How to Use for Lighting
+
+1. Open the app in your browser.
+2. Click the **Fullscreen** button or press `F`.
+3. Place your camera just above or behind the monitor.
+4. Pick a preset (Soft / Warm / Cool etc.).
+5. Fine-tune using sliders or arrow keys until your face looks well lit.
+6. Optionally open the URL on another device/monitor for multi-directional lighting.
+
+---
+
+## Future Ideas
+
+- Per-preset customization and saving
+- Multi-monitor awareness / hints
+- Auto-dim at night based on system time
+- Mobile-optimized “phone as light” mode
+
+---
+
+## License
+
+MIT – feel free to use, modify, and share. A link back to the repo is appreciated if you find it useful.
