@@ -27,6 +27,30 @@ function App() {
     localStorage.setItem("temperature", temperature.toString());
   }, [temperature]);
 
+  // Keyboard shortcuts for brightness and temperature
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setBrightness((prev) => Math.min(100, prev + 5));
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setBrightness((prev) => Math.max(0, prev - 5));
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        setTemperature((prev) => Math.min(6500, prev + 100));
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        setTemperature((prev) => Math.max(2700, prev - 100));
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const toggleControls = () => {
     setControlsVisible(!controlsVisible);
   };
