@@ -1,0 +1,48 @@
+.top-bar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 100;
+}
+
+.top-icon-btn {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border: none;
+  color: #e5e7eb;
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.18s ease;
+}
+
+.top-icon-btn .icon {
+  font-size: 15px;
+}
+
+.top-icon-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: translateY(-1px);
+}
+
+.top-icon-btn:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 480px) {
+  .top-bar {
+    right: 10px;
+    top: 10px;
+  }
+
+  .top-icon-btn .label {
+    display: none;
+  }
+}
